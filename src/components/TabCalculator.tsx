@@ -36,6 +36,7 @@ import {
   ChevronDown,
   CheckCircle2,
   Clock,
+  Sparkles,
 } from 'lucide-react';
 
 interface TabCalculatorProps {
@@ -753,6 +754,16 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                 </button>
               </div>
             </div>
+
+            {/* Bulk Sheet Pricing Badge */}
+            {calculation.isBulkPricingApplied && (
+              <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs font-semibold flex items-center gap-2 animate-fade-in">
+                <Sparkles className="w-4 h-4 text-emerald-500 shrink-0" />
+                <span>
+                  Đã áp dụng đơn giá sỉ: <strong>{formatCurrencyVND(pricingConfig.bulkSheetPricing?.unitPrice || 0)}/trang</strong> (&ge; {pricingConfig.bulkSheetPricing?.thresholdSheets} tờ)
+                </span>
+              </div>
+            )}
 
             {/* Calculations Breakdown */}
             <ul className="space-y-3.5 text-xs font-sans">

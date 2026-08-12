@@ -80,4 +80,19 @@ export function calculateBilling(
   }
   extraCost += duplexSurchargeTotal;
 
-  // Grand Total rounded to neare
+  // Grand Total rounded to nearest 100 VND
+  const rawTotal = printCost + extraCost;
+  const totalAmount = Math.round(rawTotal / 100) * 100;
+
+  return {
+    filePages: totalRawFilePages,
+    copies: totalCopies,
+    totalPages,
+    totalSheets,
+    unitPrintPrice,
+    printCost,
+    extraCost,
+    totalAmount,
+    isBulkPricingApplied,
+  };
+}
