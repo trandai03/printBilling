@@ -71,3 +71,7 @@ Desktop.ini
 
 # Log Files
 *.log
+scratch/
+
+# SuperPower
+docs/
