@@ -1,6 +1,0 @@
-{
-  "rust-analyzer.check.extraArgs": [
-    "--target-dir",
-    "C:/tmp/rust_analyzer_target"
-  ]
-}
