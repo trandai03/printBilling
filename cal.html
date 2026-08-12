@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QuickPrice Photocopy - New Order</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container": "#eeeeee",
+                "inverse-primary": "#a6c8ff",
+                "on-secondary": "#ffffff",
+                "on-primary-fixed-variant": "#004787",
+                "outline": "#717783",
+                "on-tertiary-container": "#ffe0d1",
+                "secondary": "#5e5e5e",
+                "tertiary-fixed": "#ffdbc9",
+                "on-error": "#ffffff",
+                "primary-fixed": "#d5e3ff",
+                "on-background": "#1a1c1c",
+                "surface-variant": "#e2e2e2",
+                "on-tertiary-fixed-variant": "#763300",
+                "surface-bright": "#f9f9f9",
+                "on-tertiary-fixed": "#331200",
+                "surface": "#f9f9f9",
+                "tertiary-fixed-dim": "#ffb68d",
+                "surface-tint": "#005eb1",
+                "surface-container-lowest": "#ffffff",
+                "tertiary-container": "#a84c00",
+                "inverse-on-surface": "#f1f1f1",
+                "surface-container-highest": "#e2e2e2",
+                "background": "#f9f9f9",
+                "error": "#ba1a1a",
+                "on-primary-fixed": "#001c3b",
+                "tertiary": "#833900",
+                "secondary-container": "#e1dfdf",
+                "on-primary": "#ffffff",
+                "inverse-surface": "#2f3131",
+                "secondary-fixed": "#e4e2e2",
+                "surface-container-high": "#e8e8e8",
+                "primary": "#004f96",
+                "on-surface": "#1a1c1c",
+                "error-container": "#ffdad6",
+                "primary-fixed-dim": "#a6c8ff",
+                "on-secondary-fixed": "#1b1c1c",
+                "outline-variant": "#c1c6d4",
+                "on-primary-container": "#dbe7ff",
+                "surface-dim": "#dadada",
+                "on-surface-variant": "#414752",
+                "surface-container-low": "#f3f3f3",
+                "primary-container": "#0067c0",
+                "secondary-fixed-dim": "#c7c6c6",
+                "on-secondary-container": "#626262",
+                "on-secondary-fixed-variant": "#464747",
+                "on-error-container": "#93000a",
+                "on-tertiary": "#ffffff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "margin-desktop": "32px",
+                "margin-mobile": "16px",
+                "base": "4px",
+                "sm": "8px",
+                "gutter": "20px",
+                "lg": "24px",
+                "xs": "4px",
+                "md": "16px",
+                "xl": "40px",
+                "sidebar-width": "260px",
+                "margin-page": "24px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": [
+                        "Hanken Grotesk"
+                ],
+                "display-lg": [
+                        "Hanken Grotesk"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Hanken Grotesk"
+                ],
+                "title-md": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "body-sm": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Hanken Grotesk"
+                ],
+                "label-caps": [
+                        "Inter"
+                ],
+                "code": [
+                        "JetBrains Mono"
+                ],
+                "display": [
+                        "Hanken Grotesk"
+                ]
+        },
+        "fontSize": {
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-lg": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "title-md": [
+                        "18px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                "code": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                "display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .acrylic-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        
+        .radio-custom:checked + div {
+            border-color: #004f96;
+            background-color: rgba(0, 79, 150, 0.05);
+        }
+        
+        .radio-custom:checked + div .radio-indicator {
+            background-color: #004f96;
+            border-color: #004f96;
+        }
+
+        .checkbox-custom:checked + div {
+            border-color: #004f96;
+            background-color: rgba(0, 79, 150, 0.05);
+        }
+        
+        .checkbox-custom:checked + div .checkbox-indicator {
+            background-color: #004f96;
+            border-color: #004f96;
+        }
+        .checkbox-custom:checked + div .checkbox-indicator span {
+            opacity: 1;
+        }
+
+        .dropzone-hover {
+            border-color: #004f96;
+            background-color: rgba(0, 79, 150, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-sm h-screen overflow-hidden flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (Shared Component) -->
+<aside class="w-[260px] h-screen fixed left-0 top-0 bg-surface-container-lowest text-primary font-body-sm text-body-sm border-r border-outline-variant flex flex-col h-full py-6 z-20">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined font-bold text-[20px]" style="font-variation-settings: 'FILL' 1;">calculate</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary font-bold">CopyCalc</h1>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold opacity-70">V1.0.4</p>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<!-- Active Tab: New Order -->
+<a class="flex items-center gap-3 px-4 py-3 text-primary bg-primary/5 border-l-[3px] border-primary rounded-r-lg active:scale-[0.98] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">add_shopping_cart</span>
+<span class="font-medium">New Order</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg active:scale-[0.98] transition-colors duration-200 ml-[3px]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">history</span>
+<span>History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg active:scale-[0.98] transition-colors duration-200 ml-[3px]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-3 space-y-1 border-t border-outline-variant/30 pt-4">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg active:scale-[0.98] transition-colors duration-200 ml-[3px] text-sm" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">help</span>
+<span>Help</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-error-container hover:text-error rounded-lg active:scale-[0.98] transition-colors duration-200 ml-[3px] text-sm text-error/80 hover:text-error" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">logout</span>
+<span>Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-sidebar-width flex-1 flex flex-col h-screen overflow-hidden bg-background relative">
+<!-- Optional Ambient Light Effect -->
+<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
+<!-- Header -->
+<header class="h-20 flex items-center px-margin-page border-b border-surface-container-high z-10 bg-background/80 acrylic-blur shrink-0">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Create New Order</h2>
+<p class="text-on-surface-variant mt-0.5 font-body-sm">Configure document settings and calculate pricing.</p>
+</div>
+<div class="ml-auto flex items-center gap-4">
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-primary/5 transition-colors relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full ring-2 ring-background"></span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container border border-outline-variant overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A macro photography shot of a sleek, abstract geometric shape reflecting subtle blue and silver lighting. The composition is highly polished and professional, acting as a modern, high-tech avatar for a software application. The background is a very dark gray." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjgkx0YBPrv-dY-rbIcQjH--Shj-dy-VsuIeiiUaCe5ZonFymLoDYxMfQ93LyZDGYx0d_UvkhKGl6wPNQEDH9axhDhar73PGHJ3_Xybl2p7mw5TfEwoVqbDwE0Qxsfv5x6LE042y4zUkpe1ieCRoeHsf7HaE1NlVQ5w8fFTB_q8BhiuoR2CY5oNPKK0qKh9pSt01KaMN0y0jsJ1B-K1FK1O51ZxnL75KExIQYwb_JLZqdC7JU9jEE7"/>
+</div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-margin-page z-10 flex gap-6 pb-24">
+<!-- Left Column: Form & Config -->
+<div class="flex-1 flex flex-col gap-6 max-w-4xl">
+<!-- Dropzone Level 1 Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-8 flex flex-col items-center justify-center text-center cursor-pointer border-dashed border-2 hover:border-primary transition-colors group shadow-sm" id="dropzone">
+<div class="flex gap-4 mb-4">
+<div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-[32px] text-error" style="font-variation-settings: 'FILL' 1;">picture_as_pdf</span>
+</div>
+<div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300 delay-75">
+<span class="material-symbols-outlined text-[32px] text-primary" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Drag &amp; Drop PDF or Word file here</h3>
+<p class="text-on-surface-variant font-body-sm">or click to browse from your computer</p>
+<input accept=".pdf,.doc,.docx" class="hidden" id="fileInput" type="file"/>
+</div>
+<!-- Form Grid Level 1 Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 flex flex-col gap-6 shadow-sm">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">tune</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Document Settings</h3>
+</div>
+<!-- Grid Layout for Fields -->
+<div class="grid grid-cols-2 gap-6">
+<!-- Field: Doc Name -->
+<div class="col-span-2">
+<label class="block text-label-caps text-on-surface-variant mb-2">Document Name</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:ring-0 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body-lg" type="text" value="university_thesis_final_v2.pdf"/>
+</div>
+<!-- Field: Pages -->
+<div>
+<label class="block text-label-caps text-on-surface-variant mb-2">Original Pages</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:ring-0 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body-lg text-center pr-10" type="number" value="12"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-1">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[16px]">expand_less</span></button>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[16px]">expand_more</span></button>
+</div>
+</div>
+</div>
+<!-- Field: Quantity -->
+<div>
+<label class="block text-label-caps text-on-surface-variant mb-2">Quantity (Copies)</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 text-on-surface focus:ring-0 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body-lg text-center pr-10" min="1" type="number" value="1"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-1">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[16px]">expand_less</span></button>
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[16px]">expand_more</span></button>
+</div>
+</div>
+</div>
+<!-- Field: Paper Size -->
+<div>
+<label class="block text-label-caps text-on-surface-variant mb-2">Paper Size</label>
+<div class="grid grid-cols-2 gap-2">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only radio-custom" name="paper_size" type="radio"/>
+<div class="flex items-center justify-center py-3 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors relative">
+<span class="font-body-lg font-medium text-on-surface">A4</span>
+<div class="absolute left-3 w-4 h-4 rounded-full border border-outline-variant flex items-center justify-center radio-indicator transition-colors bg-white">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+</div>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only radio-custom" name="paper_size" type="radio"/>
+<div class="flex items-center justify-center py-3 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors relative bg-white">
+<span class="font-body-lg font-medium text-on-surface-variant peer-checked:text-on-surface">A3</span>
+<div class="absolute left-3 w-4 h-4 rounded-full border border-outline-variant flex items-center justify-center radio-indicator transition-colors bg-white">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+</div>
+</div>
+</label>
+</div>
+</div>
+<!-- Field: Inking -->
+<div>
+<label class="block text-label-caps text-on-surface-variant mb-2">Inking</label>
+<div class="grid grid-cols-2 gap-2">
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only radio-custom" name="inking" type="radio"/>
+<div class="flex items-center justify-center gap-2 py-3 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors relative bg-white">
+<div class="absolute left-3 w-4 h-4 rounded-full border border-outline-variant flex items-center justify-center radio-indicator transition-colors bg-white">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">contrast</span>
+<span class="font-body-sm font-medium text-on-surface">B&amp;W</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only radio-custom" name="inking" type="radio"/>
+<div class="flex items-center justify-center gap-2 py-3 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors relative bg-white">
+<div class="absolute left-3 w-4 h-4 rounded-full border border-outline-variant flex items-center justify-center radio-indicator transition-colors bg-white">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary">palette</span>
+<span class="font-body-sm font-medium text-on-surface-variant">Color</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Field: Binding Options (Bento-style checkboxes) -->
+<div class="col-span-2 mt-2">
+<label class="block text-label-caps text-on-surface-variant mb-3">Binding &amp; Finishing</label>
+<div class="grid grid-cols-3 gap-4">
+<label class="cursor-pointer group">
+<input class="sr-only checkbox-custom" type="checkbox"/>
+<div class="h-24 border border-outline-variant rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-surface-container transition-colors relative overflow-hidden bg-white">
+<div class="absolute top-2 right-2 w-5 h-5 rounded border border-outline-variant flex items-center justify-center checkbox-indicator transition-colors bg-white">
+<span class="material-symbols-outlined text-[14px] text-white opacity-0 transition-opacity">check</span>
+</div>
+<span class="material-symbols-outlined text-[24px] text-on-surface-variant group-hover:text-primary transition-colors">book</span>
+<span class="font-body-sm font-medium text-on-surface">Bìa kiếng</span>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input checked="" class="sr-only checkbox-custom" type="checkbox"/>
+<div class="h-24 border border-primary bg-primary/5 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-primary/10 transition-colors relative overflow-hidden">
+<div class="absolute top-2 right-2 w-5 h-5 rounded border border-primary bg-primary flex items-center justify-center checkbox-indicator transition-colors">
+<span class="material-symbols-outlined text-[14px] text-white">check</span>
+</div>
+<span class="material-symbols-outlined text-[24px] text-primary transition-colors">attach_file</span>
+<span class="font-body-sm font-medium text-on-surface">Đóng ghim</span>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="sr-only checkbox-custom" type="checkbox"/>
+<div class="h-24 border border-outline-variant rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-surface-container transition-colors relative overflow-hidden bg-white">
+<div class="absolute top-2 right-2 w-5 h-5 rounded border border-outline-variant flex items-center justify-center checkbox-indicator transition-colors bg-white">
+<span class="material-symbols-outlined text-[14px] text-white opacity-0 transition-opacity">check</span>
+</div>
+<span class="material-symbols-outlined text-[24px] text-on-surface-variant group-hover:text-primary transition-colors">auto_stories</span>
+<span class="font-body-sm font-medium text-on-surface">Lò xo</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Summary Sticky Panel -->
+<div class="w-[340px] shrink-0">
+<div class="sticky top-0">
+<!-- Summary Card (Level 2 Elevation with Acrylic blur simulation) -->
+<div class="bg-surface-container-lowest/90 acrylic-blur rounded-xl border border-outline-variant p-6 shadow-md relative overflow-hidden">
+<!-- Subtle gradient decorative element -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full pointer-events-none"></div>
+<div class="flex items-center gap-2 mb-6 border-b border-outline-variant pb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-semibold">Order Summary</h3>
+</div>
+<ul class="space-y-4 mb-6">
+<li class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Pages Output</span>
+<span class="text-on-surface font-medium font-code">12 sheets</span>
+</li>
+<li class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Printing Cost</span>
+<span class="text-on-surface font-medium font-code">115.000đ</span>
+</li>
+<li class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface-variant">Binding Cost</span>
+<span class="text-on-surface font-medium font-code">5.000đ</span>
+</li>
+</ul>
+<div class="border-t border-outline-variant border-dashed pt-4 mb-8">
+<div class="flex justify-between items-end">
+<span class="text-label-caps text-on-surface-variant">Total Amount</span>
+<span class="font-display text-[28px] font-bold text-primary tracking-tight">120.000đ</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-[#004787] text-white font-headline-sm font-semibold py-4 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-sm hover:shadow-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">print</span>
+                            Save &amp; Print Receipt
+                        </button>
+<div class="mt-4 flex justify-center">
+<button class="text-label-caps text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+                                RESET FORM
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple drag and drop hover effect script
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('fileInput');
+
+        dropzone.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dropzone-hover');
+        });
+
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('dropzone-hover');
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dropzone-hover');
+            // Handle file drop logic here
+            const files = e.dataTransfer.files;
+            if(files.length > 0) {
+                // UI feedback
+                dropzone.querySelector('h3').textContent = files[0].name;
+                dropzone.querySelector('p').textContent = (files[0].size / 1024 / 1024).toFixed(2) + ' MB';
+            }
+        });
+    </script>
+</body></html>
