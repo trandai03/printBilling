@@ -1,5 +1,5 @@
 import Database from '@tauri-apps/plugin-sql';
-import { PricingConfig, OrderRecord, OrderStatus, DEFAULT_PRICING_CONFIG } from '../types/billing';
+import { PricingConfig, OrderRecord, OrderStatus, DEFAULT_PRICING_CONFIG, BackupPayload } from '../types/billing';
 
 const DB_NAME = 'sqlite:print_billing.db';
 const LOCAL_STORAGE_PRICING_KEY = 'print_billing_pricing_config_v3';
@@ -258,4 +258,82 @@ export async function deleteOrderRecord(id: string): Promise<void> {
 
   const currentOrders = fetchOrderRecordsFromLocalStorage();
   const updatedOrders = currentOrders.filter((o) => o.id !== id);
-  localStorage.setItem(LOCAL_STORAGE_ORDERS_KEY, JSON
+  localStorage.setItem(LOCAL_STORAGE_ORDERS_KEY, JSON.stringify(updatedOrders));
+}
+
+export async function clearAllOrders(): Promise<void> {
+  if (isTauriSqlAvailable && dbInstance) {
+    try {
+      await dbInstance.execute('DELETE FROM orders');
+    } catch (err) {
+      console.error('Error clearing orders from SQLite:', err);
+    }
+  }
+
+  localStorage.removeItem(LOCAL_STORAGE_ORDERS_KEY);
+}
+
+function fetchOrderRecordsFromLocalStorage(): OrderRecord[] {
+  const stored = localStorage.getItem(LOCAL_STORAGE_ORDERS_KEY);
+  if (stored) {
+    try {
+      return JSON.parse(stored);
+    } catch (e) {
+      return [];
+    }
+  }
+  return [];
+}
+
+// ---------------- DATA BACKUP & RESTORE API ----------------
+
+export async function exportFullBackupPayload(): Promise<BackupPayload> {
+  const pricingConfig = await fetchPricingConfig();
+  const orders = await fetchOrderRecords();
+
+  return {
+    version: '1.0',
+    exportedAt: new Date().toISOString(),
+    pricingConfig,
+    orders,
+  };
+}
+
+export async function importFullBackupPayload(
+  payload: BackupPayload,
+  mode: 'overwrite' | 'merge'
+): Promise<{ success: boolean; importedOrdersCount: number }> {
+  if (!payload || !payload.pricingConfig || !Array.isArray(payload.orders)) {
+    throw new Error('File sao lưu không hợp lệ hoặc bị lỗi cấu trúc.');
+  }
+
+  // 1. Restore Pricing Config
+  await savePricingConfig(payload.pricingConfig);
+
+  // 2. Restore Orders
+  let importedCount = 0;
+  if (mode === 'overwrite') {
+    await clearAllOrders();
+    for (const order of payload.orders) {
+      await insertOrderRecord(order);
+      importedCount++;
+    }
+  } else {
+    // Merge mode: Skip existing orders by ID
+    const currentOrders = await fetchOrderRecords();
+    const existingIds = new Set(currentOrders.map((o) => o.id));
+
+    for (const order of payload.orders) {
+      if (!existingIds.has(order.id)) {
+        await insertOrderRecord(order);
+        importedCount++;
+      }
+    }
+  }
+
+  return {
+    success: true,
+    importedOrdersCount: importedCount,
+  };
+}
+

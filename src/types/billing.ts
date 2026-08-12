@@ -95,4 +95,39 @@ export interface OrderRecord {
   printMode: PrintMode;
   sidesMode: SidesMode;
   paperWeight: PaperWeight;
-  e
+  extraServices: ExtraServices;
+  totalPages: number;
+  totalSheets: number;
+  printCost: number;
+  paperCost?: number;
+  extraCost: number;
+  totalAmount: number;
+  notes?: string;
+}
+
+export const DEFAULT_PRICING_CONFIG: PricingConfig = {
+  printPrices: {
+    A4: { bw: 300, color: 1500 },
+    A3: { bw: 600, color: 3000 },
+    A5: { bw: 200, color: 1000 },
+  },
+  duplexSurcharge: 0,
+  extraServices: {
+    coverPagePrice: 3000,
+    staplePrice: 2000,
+    spiralBindingPrice: 15000,
+  },
+  bulkSheetPricing: {
+    enabled: false,
+    thresholdSheets: 100,
+    unitPrice: 200,
+  },
+};
+
+export interface BackupPayload {
+  version: string;
+  exportedAt: string;
+  pricingConfig: PricingConfig;
+  orders: OrderRecord[];
+}
+
