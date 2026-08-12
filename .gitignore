@@ -18,13 +18,33 @@ build/
 .cargo/
 src-tauri/.cargo/
 
-# Agents & Skills Configs
-.agents/
+# Installers & Release Builds
+*.msi
+*.exe
+*.dmg
+*.deb
+*.appimage
+*.zip
 
-# Environment & Local Configurations
+# Agents & AI Assistant Configs / Metadata
+.agents/
+skills-lock.json
+scratch/
+
+# Environment & Local Configurations / Secrets
 .env
 .env.local
 .env.*.local
+
+# Certificates, Keys & Signing Files
+*.p12
+*.pem
+*.key
+*.keystore
+*.jks
+*.crt
+*.pfx
+*.cer
 
 # Database & Application Data
 *.db
@@ -49,6 +69,5 @@ Desktop.ini
 *.suo
 *.user
 
-# Log & Temporary Files
+# Log Files
 *.log
-scratch/
