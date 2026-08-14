@@ -52,6 +52,8 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
   const {
     fileItems,
     addFiles,
+    addManualItem,
+    updateFileName,
     updateFilePageCount,
     updateFileCopies,
     removeFileItem,
@@ -244,6 +246,15 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                 Thêm File
               </button>
 
+              <button
+                type="button"
+                onClick={() => addManualItem()}
+                className="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-400 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all shadow-sm"
+              >
+                <Edit3 className="w-4 h-4" />
+                Nhập Thủ Công
+              </button>
+
               {fileItems.length > 0 && (
                 <button
                   type="button"
@@ -262,6 +273,8 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
               {fileItems.map((item) => {
                 const ext = item.fileName.split('.').pop()?.toLowerCase();
                 const isPdf = ext === 'pdf';
+                const isManual = item.isManual || !item.file;
+
                 return (
                   <div
                     key={item.id}
@@ -271,20 +284,44 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                     <div className="flex items-center gap-3 truncate flex-1">
                       <div
                         className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
-                          isPdf
+                          isManual
+                            ? 'bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-500/20'
+                            : isPdf
                             ? 'bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-error border border-red-200 dark:border-red-500/20'
                             : 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-primary border border-blue-200 dark:border-blue-500/20'
                         }`}
                       >
-                        {isPdf ? <FileText className="w-5 h-5" /> : <FileCode className="w-5 h-5" />}
+                        {isManual ? (
+                          <Edit3 className="w-5 h-5" />
+                        ) : isPdf ? (
+                          <FileText className="w-5 h-5" />
+                        ) : (
+                          <FileCode className="w-5 h-5" />
+                        )}
                       </div>
 
-                      <div className="truncate text-left">
-                        <h4 className="font-semibold text-slate-900 dark:text-on-surface text-xs truncate">
-                          {item.fileName}
-                        </h4>
-                        <p className="text-[11px] text-slate-500 dark:text-on-surface-variant font-mono font-code">
-                          {formatFileSize(item.fileSize)}
+                      <div className="truncate text-left flex-1">
+                        {isManual ? (
+                          <input
+                            type="text"
+                            value={item.fileName}
+                            onChange={(e) => updateFileName(item.id, e.target.value)}
+                            placeholder="Nhập tên tài liệu..."
+                            className="font-semibold text-slate-900 dark:text-on-surface text-xs bg-white dark:bg-[#131313] border border-slate-300 dark:border-outline-variant/40 rounded px-2 py-0.5 focus:outline-none focus:border-purple-600 dark:focus:border-purple-400 w-full max-w-xs"
+                          />
+                        ) : (
+                          <h4 className="font-semibold text-slate-900 dark:text-on-surface text-xs truncate">
+                            {item.fileName}
+                          </h4>
+                        )}
+                        <p className="text-[11px] text-slate-500 dark:text-on-surface-variant font-mono font-code mt-0.5">
+                          {isManual ? (
+                            <span className="inline-flex items-center gap-1 text-purple-600 dark:text-purple-400 font-semibold">
+                              Nhập thủ công
+                            </span>
+                          ) : (
+                            formatFileSize(item.fileSize)
+                          )}
                           {item.loading && ' | Đang đếm số trang...'}
                         </p>
                       </div>
@@ -328,7 +365,7 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                         type="button"
                         onClick={() => removeFileItem(item.id)}
                         className="p-1.5 text-slate-400 hover:text-red-600 dark:hover:text-error hover:bg-slate-200 dark:hover:bg-error/10 rounded-lg transition-colors"
-                        title="Xóa file này"
+                        title="Xóa dòng này"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -343,11 +380,7 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}
-              onClick={() => {
-                const el = document.getElementById('fileInputMulti');
-                if (el) el.click();
-              }}
-              className={`rounded-xl border-dashed border-2 p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all ${
+              className={`rounded-xl border-dashed border-2 p-8 flex flex-col items-center justify-center text-center transition-all ${
                 isDragging
                   ? 'border-blue-600 dark:border-primary bg-blue-50 dark:bg-primary/10 scale-[1.01]'
                   : 'border-slate-300 dark:border-outline-variant hover:border-blue-500 dark:hover:border-primary hover:bg-slate-50 dark:hover:bg-[#323232]'
@@ -364,9 +397,31 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
               <h3 className="font-bold text-base text-slate-900 dark:text-on-surface mb-1">
                 Kéo thả 1 hoặc NHIỀU file (PDF / DOCX) vào đây
               </h3>
-              <p className="text-slate-500 dark:text-on-surface-variant text-xs">
-                hoặc bấm để chọn từ máy tính của bạn
+              <p className="text-slate-500 dark:text-on-surface-variant text-xs mb-4">
+                hoặc chọn file từ máy tính của bạn
               </p>
+
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById('fileInputMulti');
+                    if (el) el.click();
+                  }}
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-primary dark:hover:bg-[#b8d6ff] text-white dark:text-on-primary-container text-xs font-bold rounded-lg flex items-center gap-2 transition-all shadow-sm"
+                >
+                  <Plus className="w-4 h-4" />
+                  Chọn File Từ Máy
+                </button>
+                <button
+                  type="button"
+                  onClick={() => addManualItem()}
+                  className="px-4 py-2 bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-400 text-white text-xs font-bold rounded-lg flex items-center gap-2 transition-all shadow-sm"
+                >
+                  <Edit3 className="w-4 h-4" />
+                  Tự Nhập Số Trang
+                </button>
+              </div>
             </div>
           )}
         </div>

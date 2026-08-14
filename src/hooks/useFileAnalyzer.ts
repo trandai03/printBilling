@@ -79,6 +79,31 @@ export function useFileAnalyzer() {
     );
   };
 
+  const addManualItem = (customName?: string) => {
+    setFileItems((prev) => {
+      const manualCount = prev.filter((f) => f.isManual).length + 1;
+      const name = customName || `Tài liệu nhập tay ${manualCount}`;
+      const newItem: SelectedFileItem = {
+        id: `manual-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
+        file: null,
+        fileName: name,
+        fileSize: 0,
+        pageCount: 1,
+        copies: 1,
+        loading: false,
+        error: null,
+        isManual: true,
+      };
+      return [...prev, newItem];
+    });
+  };
+
+  const updateFileName = (id: string, name: string) => {
+    setFileItems((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, fileName: name } : item))
+    );
+  };
+
   const removeFileItem = (id: string) => {
     setFileItems((prev) => prev.filter((item) => item.id !== id));
   };
@@ -90,6 +115,8 @@ export function useFileAnalyzer() {
   return {
     fileItems,
     addFiles,
+    addManualItem,
+    updateFileName,
     updateFilePageCount,
     updateFileCopies,
     removeFileItem,

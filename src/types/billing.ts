@@ -57,6 +57,7 @@ export interface SelectedFileItem {
   copies: number;
   loading?: boolean;
   error?: string | null;
+  isManual?: boolean;
 }
 
 export interface CalculationResult {
