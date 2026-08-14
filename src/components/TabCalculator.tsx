@@ -216,11 +216,11 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
       {/* Left Column: Multi-File Dropzone & Config Form */}
       <div className="flex-1 flex flex-col gap-6 w-full max-w-full lg:max-w-4xl">
         {/* Dropzone / File List Container Card */}
-        <div className="bg-white dark:bg-[#2D2D2D] rounded-xl border border-slate-200 dark:border-[#3D3D3D] p-6 shadow-sm space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-200 dark:border-[#3D3D3D] pb-3">
-            <div className="flex items-center gap-2">
-              <Files className="w-5 h-5 text-blue-600 dark:text-primary" />
-              <h3 className="font-bold text-base text-slate-900 dark:text-on-surface">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm space-y-4 transition-colors">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+            <div className="flex items-center gap-2.5">
+              <Files className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <h3 className="font-bold text-base text-slate-900 dark:text-slate-100">
                 Danh Sách File In ({fileItems.length} file)
               </h3>
             </div>
@@ -240,7 +240,7 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                   const el = document.getElementById('fileInputMulti');
                   if (el) el.click();
                 }}
-                className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 dark:bg-primary dark:hover:bg-[#b8d6ff] text-white dark:text-on-primary-container text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all shadow-sm"
+                className="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-all shadow-sm active:scale-95"
               >
                 <Plus className="w-4 h-4" />
                 Thêm File
@@ -249,7 +249,7 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
               <button
                 type="button"
                 onClick={() => addManualItem()}
-                className="px-3 py-1.5 bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-400 text-white text-xs font-bold rounded-lg flex items-center gap-1.5 transition-all shadow-sm"
+                className="px-3.5 py-2 bg-purple-600 hover:bg-purple-700 dark:bg-purple-600 dark:hover:bg-purple-500 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-all shadow-sm active:scale-95"
               >
                 <Edit3 className="w-4 h-4" />
                 Nhập Thủ Công
@@ -259,7 +259,7 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                 <button
                   type="button"
                   onClick={clearAllFiles}
-                  className="px-3 py-1.5 text-xs text-red-600 dark:text-error hover:bg-red-50 dark:hover:bg-error/10 rounded-lg transition-colors border border-red-200 dark:border-error/20"
+                  className="px-3 py-2 text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 rounded-xl transition-colors border border-rose-200 dark:border-rose-900/40"
                 >
                   Xóa Hết
                 </button>
@@ -427,11 +427,11 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
         </div>
 
         {/* Searchable Customer Information Level 1 Card */}
-        <div className="bg-white dark:bg-[#2D2D2D] rounded-xl border border-slate-200 dark:border-[#3D3D3D] p-6 flex flex-col gap-6 shadow-sm">
-          <div className="flex items-center justify-between border-b border-slate-200 dark:border-[#3D3D3D] pb-3">
-            <div className="flex items-center gap-2">
-              <User className="w-5 h-5 text-blue-600 dark:text-primary" />
-              <h3 className="font-bold text-base text-slate-900 dark:text-on-surface">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 flex flex-col gap-6 shadow-sm transition-colors">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+            <div className="flex items-center gap-2.5">
+              <User className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <h3 className="font-bold text-base text-slate-900 dark:text-slate-100">
                 Thông Tin Khách Hàng & Đơn Hàng
               </h3>
             </div>
@@ -439,14 +439,14 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
             {/* Direct Select Customer Dropdown */}
             {uniqueCustomers.length > 0 && (
               <div className="flex items-center gap-2 text-xs">
-                <span className="text-slate-500 dark:text-on-surface-variant hidden sm:inline">Chọn khách cũ:</span>
+                <span className="text-slate-500 dark:text-slate-400 hidden sm:inline">Chọn khách cũ:</span>
                 <select
                   onChange={(e) => {
                     const found = uniqueCustomers.find((c) => c.name === e.target.value);
                     if (found) handleSelectCustomer(found);
                   }}
                   value={selectedCustomerObj?.name || ''}
-                  className="bg-slate-100 dark:bg-[#1A1A1A] border border-slate-300 dark:border-outline-variant/40 rounded-lg px-3 py-1.5 text-xs text-slate-900 dark:text-on-surface font-semibold focus:outline-none focus:border-blue-600 dark:focus:border-primary"
+                  className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-semibold focus:outline-none focus:border-blue-600 dark:focus:border-blue-400"
                 >
                   <option value="">-- Danh sách khách hàng sẵn có --</option>
                   {uniqueCustomers.map((cust) => (
@@ -462,13 +462,13 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Customer Name Input with Searchable Autocomplete Dropdown */}
             <div className="relative">
-              <label className="block text-xs font-bold text-slate-500 dark:text-on-surface-variant uppercase tracking-wider mb-2 font-code flex items-center justify-between">
+              <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 font-mono flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
-                  <UserCheck className="w-3.5 h-3.5 text-blue-600 dark:text-primary" />
+                  <UserCheck className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                   Tên Khách Hàng / Công Ty
                 </span>
                 {selectedCustomerObj && (
-                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-500/20">
+                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800/40">
                     Khách cũ ({selectedCustomerObj.orderCount} đơn)
                   </span>
                 )}
@@ -485,7 +485,7 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                     setIsCustomerDropdownOpen(true);
                   }}
                   placeholder="Gõ tìm hoặc nhập tên khách hàng mới..."
-                  className="w-full bg-slate-100 dark:bg-[#1A1A1A] border border-slate-200 dark:border-outline-variant/40 rounded-lg pl-4 pr-10 py-3 text-slate-900 dark:text-on-surface focus:outline-none focus:border-blue-600 dark:focus:border-primary transition-all text-sm font-sans"
+                  className="w-full bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-xl pl-4 pr-10 py-3 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-600 dark:focus:border-blue-400 transition-all text-sm font-sans"
                 />
                 <ChevronDown
                   onClick={() => setIsCustomerDropdownOpen((prev) => !prev)}
@@ -497,28 +497,28 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
               {isCustomerDropdownOpen && filteredCustomers.length > 0 && (
                 <div
                   onMouseLeave={() => setIsCustomerDropdownOpen(false)}
-                  className="absolute left-0 right-0 top-full mt-1 bg-white dark:bg-[#1A1A1A] border border-slate-200 dark:border-outline-variant rounded-xl shadow-2xl z-30 max-h-60 overflow-y-auto divide-y divide-slate-100 dark:divide-[#252525]"
+                  className="absolute left-0 right-0 top-full mt-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-2xl z-30 max-h-60 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800"
                 >
                   {filteredCustomers.map((cust) => (
                     <div
                       key={cust.id}
                       onClick={() => handleSelectCustomer(cust)}
-                      className="p-3 hover:bg-blue-50 dark:hover:bg-primary/10 cursor-pointer flex items-center justify-between transition-colors text-xs"
+                      className="p-3 hover:bg-blue-50 dark:hover:bg-blue-950/40 cursor-pointer flex items-center justify-between transition-colors text-xs"
                     >
                       <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-full bg-blue-100 dark:bg-primary/20 flex items-center justify-center text-blue-600 dark:text-primary font-bold text-xs">
+                        <div className="w-7 h-7 rounded-full bg-blue-100 dark:bg-blue-950/60 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold text-xs">
                           {cust.name.slice(0, 1).toUpperCase()}
                         </div>
                         <div>
-                          <div className="font-bold text-slate-900 dark:text-on-surface">{cust.name}</div>
+                          <div className="font-bold text-slate-900 dark:text-slate-100">{cust.name}</div>
                           {cust.phone && (
-                            <div className="text-[11px] text-slate-500 font-mono font-code">{cust.phone}</div>
+                            <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">{cust.phone}</div>
                           )}
                         </div>
                       </div>
 
                       <div className="text-right">
-                        <div className="font-bold text-emerald-600 dark:text-emerald-400 font-mono font-code">
+                        <div className="font-bold text-emerald-600 dark:text-emerald-400 font-mono">
                           {formatCurrencyVND(cust.totalSpent)}
                         </div>
                         <div className="text-[10px] text-slate-400">{cust.orderCount} đơn hàng</div>
@@ -537,7 +537,7 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                       key={cust.id}
                       type="button"
                       onClick={() => handleSelectCustomer(cust)}
-                      className="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-surface-container hover:bg-blue-50 dark:hover:bg-primary/10 text-slate-700 dark:text-on-surface-variant hover:text-blue-600 dark:hover:text-primary text-[11px] font-medium border border-slate-200 dark:border-outline-variant/30 transition-colors"
+                      className="px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950/40 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 text-[11px] font-medium border border-slate-200 dark:border-slate-700/60 transition-colors"
                     >
                       {cust.name}
                     </button>
@@ -548,8 +548,8 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
 
             {/* Customer Phone Input */}
             <div>
-              <label className="block text-xs font-bold text-slate-500 dark:text-on-surface-variant uppercase tracking-wider mb-2 font-code flex items-center gap-1.5">
-                <Phone className="w-3.5 h-3.5 text-blue-600 dark:text-primary" />
+              <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 font-mono flex items-center gap-1.5">
+                <Phone className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                 <span>Số Điện Thoại (Tùy chọn)</span>
               </label>
               <input
@@ -557,13 +557,13 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                 value={customerPhoneInput}
                 onChange={(e) => setCustomerPhoneInput(e.target.value)}
                 placeholder="SĐT khách hàng..."
-                className="w-full bg-slate-100 dark:bg-[#1A1A1A] border border-slate-200 dark:border-outline-variant/40 rounded-lg px-4 py-3 text-slate-900 dark:text-on-surface focus:outline-none focus:border-blue-600 dark:focus:border-primary transition-all text-sm font-sans font-mono font-code"
+                className="w-full bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-600 dark:focus:border-blue-400 transition-all text-sm font-sans font-mono"
               />
             </div>
 
             {/* Document Order Title */}
             <div className="col-span-1 md:col-span-2">
-              <label className="block text-xs font-bold text-slate-500 dark:text-on-surface-variant uppercase tracking-wider mb-2 font-code">
+              <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 font-mono">
                 Tên Ghi Chú Đơn Hàng (Tùy chọn)
               </label>
               <input
@@ -571,17 +571,17 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                 value={orderNameInput}
                 onChange={(e) => setOrderNameInput(e.target.value)}
                 placeholder="Nhập tên đơn hàng hoặc ghi chú..."
-                className="w-full bg-slate-100 dark:bg-[#1A1A1A] border border-slate-200 dark:border-outline-variant/40 rounded-lg px-4 py-3 text-slate-900 dark:text-on-surface focus:outline-none focus:border-blue-600 dark:focus:border-primary transition-all text-sm font-sans"
+                className="w-full bg-slate-100/80 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-600 dark:focus:border-blue-400 transition-all text-sm font-sans"
               />
             </div>
           </div>
         </div>
 
         {/* Configuration Form Options Level 1 Card */}
-        <div className="bg-white dark:bg-[#2D2D2D] rounded-xl border border-slate-200 dark:border-[#3D3D3D] p-6 flex flex-col gap-6 shadow-sm">
-          <div className="flex items-center gap-2 border-b border-slate-200 dark:border-[#3D3D3D] pb-3">
-            <Edit3 className="w-5 h-5 text-blue-600 dark:text-primary" />
-            <h3 className="font-bold text-base text-slate-900 dark:text-on-surface">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 flex flex-col gap-6 shadow-sm transition-colors">
+          <div className="flex items-center gap-2.5 border-b border-slate-200 dark:border-slate-800 pb-3">
+            <Edit3 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+            <h3 className="font-bold text-base text-slate-900 dark:text-slate-100">
               Cấu Hình Quy Cách In
             </h3>
           </div>
@@ -589,7 +589,7 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Field: Paper Size */}
             <div>
-              <label className="block text-xs font-bold text-slate-500 dark:text-on-surface-variant uppercase tracking-wider mb-2 font-code">
+              <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 font-mono">
                 Khổ Giấy
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -598,10 +598,10 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                     key={size}
                     type="button"
                     onClick={() => setPaperSize(size)}
-                    className={`py-3 rounded-lg border text-sm font-semibold transition-all ${
+                    className={`py-3 rounded-xl border text-sm font-semibold transition-all ${
                       paperSize === size
-                        ? 'border-blue-600 dark:border-primary bg-blue-50 dark:bg-primary/10 text-blue-700 dark:text-primary shadow-sm font-bold'
-                        : 'border-slate-200 dark:border-outline-variant/40 bg-slate-100 dark:bg-[#1A1A1A] text-slate-700 dark:text-on-surface-variant hover:bg-slate-200 dark:hover:bg-[#252525]'
+                        ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 shadow-sm font-bold'
+                        : 'border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800'
                     }`}
                   >
                     {size}
@@ -619,10 +619,10 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                 <button
                   type="button"
                   onClick={() => setPrintMode('BW')}
-                  className={`py-3 rounded-lg border text-xs font-semibold flex items-center justify-center gap-2 transition-all ${
+                  className={`py-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-2 transition-all ${
                     printMode === 'BW'
-                      ? 'border-blue-600 dark:border-primary bg-blue-50 dark:bg-primary/10 text-blue-700 dark:text-primary font-bold'
-                      : 'border-slate-200 dark:border-outline-variant/40 bg-slate-100 dark:bg-[#1A1A1A] text-slate-700 dark:text-on-surface-variant hover:bg-slate-200 dark:hover:bg-[#252525]'
+                      ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-bold'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800'
                   }`}
                 >
                   <SunMedium className="w-4 h-4" />
@@ -632,10 +632,10 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                 <button
                   type="button"
                   onClick={() => setPrintMode('COLOR')}
-                  className={`py-3 rounded-lg border text-xs font-semibold flex items-center justify-center gap-2 transition-all ${
+                  className={`py-3 rounded-xl border text-xs font-semibold flex items-center justify-center gap-2 transition-all ${
                     printMode === 'COLOR'
-                      ? 'border-blue-600 dark:border-primary bg-blue-50 dark:bg-primary/10 text-blue-700 dark:text-primary font-bold'
-                      : 'border-slate-200 dark:border-outline-variant/40 bg-slate-100 dark:bg-[#1A1A1A] text-slate-700 dark:text-on-surface-variant hover:bg-slate-200 dark:hover:bg-[#252525]'
+                      ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-bold'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800'
                   }`}
                 >
                   <Palette className="w-4 h-4 text-purple-600 dark:text-purple-400" />
@@ -646,17 +646,17 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
 
             {/* Field: Sides Mode */}
             <div>
-              <label className="block text-xs font-bold text-slate-500 dark:text-on-surface-variant uppercase tracking-wider mb-2 font-code">
+              <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 font-mono">
                 Mặt In
               </label>
               <div className="grid grid-cols-2 gap-2">
                 <button
                   type="button"
                   onClick={() => setSidesMode('SIMPLEX')}
-                  className={`py-3 rounded-lg border text-xs font-semibold transition-all ${
+                  className={`py-3 rounded-xl border text-xs font-semibold transition-all ${
                     sidesMode === 'SIMPLEX'
-                      ? 'border-blue-600 dark:border-primary bg-blue-50 dark:bg-primary/10 text-blue-700 dark:text-primary font-bold'
-                      : 'border-slate-200 dark:border-outline-variant/40 bg-slate-100 dark:bg-[#1A1A1A] text-slate-700 dark:text-on-surface-variant hover:bg-slate-200 dark:hover:bg-[#252525]'
+                      ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-bold'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800'
                   }`}
                 >
                   1 Mặt (Simplex)
@@ -665,10 +665,10 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                 <button
                   type="button"
                   onClick={() => setSidesMode('DUPLEX')}
-                  className={`py-3 rounded-lg border text-xs font-semibold transition-all ${
+                  className={`py-3 rounded-xl border text-xs font-semibold transition-all ${
                     sidesMode === 'DUPLEX'
-                      ? 'border-blue-600 dark:border-primary bg-blue-50 dark:bg-primary/10 text-blue-700 dark:text-primary font-bold'
-                      : 'border-slate-200 dark:border-outline-variant/40 bg-slate-100 dark:bg-[#1A1A1A] text-slate-700 dark:text-on-surface-variant hover:bg-slate-200 dark:hover:bg-[#252525]'
+                      ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-bold'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800'
                   }`}
                 >
                   2 Mặt (Duplex)
@@ -678,7 +678,7 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
 
             {/* Field: Paper Weight */}
             <div>
-              <label className="block text-xs font-bold text-slate-500 dark:text-on-surface-variant uppercase tracking-wider mb-2 font-code">
+              <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 font-mono">
                 Loại Giấy
               </label>
               <div className="grid grid-cols-2 gap-2">
@@ -687,10 +687,10 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                     key={weight}
                     type="button"
                     onClick={() => setPaperWeight(weight)}
-                    className={`py-3 rounded-lg border text-xs font-semibold transition-all ${
+                    className={`py-3 rounded-xl border text-xs font-semibold transition-all ${
                       paperWeight === weight
-                        ? 'border-blue-600 dark:border-primary bg-blue-50 dark:bg-primary/10 text-blue-700 dark:text-primary shadow-sm font-bold'
-                        : 'border-slate-200 dark:border-outline-variant/40 bg-slate-100 dark:bg-[#1A1A1A] text-slate-700 dark:text-on-surface-variant hover:bg-slate-200 dark:hover:bg-[#252525]'
+                        ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 shadow-sm font-bold'
+                        : 'border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800'
                     }`}
                   >
                     Giấy {weight}
@@ -700,8 +700,8 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
             </div>
 
             {/* Bento-style Extra Services Checkboxes */}
-            <div className="col-span-1 md:col-span-2 pt-2 border-t border-slate-200 dark:border-[#3D3D3D]">
-              <label className="block text-xs font-bold text-slate-500 dark:text-on-surface-variant uppercase tracking-wider mb-3 font-code">
+            <div className="col-span-1 md:col-span-2 pt-2 border-t border-slate-200 dark:border-slate-800">
+              <label className="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3 font-mono">
                 Dịch Vụ Đi Kèm / Gia Công
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
@@ -714,10 +714,10 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                       coverPage: !prev.coverPage,
                     }))
                   }
-                  className={`h-24 rounded-xl border flex flex-col items-center justify-center gap-2 transition-all relative overflow-hidden ${
+                  className={`h-24 rounded-2xl border flex flex-col items-center justify-center gap-2 transition-all relative overflow-hidden ${
                     extraServices.coverPage
-                      ? 'border-blue-600 dark:border-primary bg-blue-50 dark:bg-primary/10 text-blue-700 dark:text-primary font-bold'
-                      : 'border-slate-200 dark:border-outline-variant/40 bg-slate-100 dark:bg-[#1A1A1A] text-slate-700 dark:text-on-surface-variant hover:bg-slate-200 dark:hover:bg-[#252525]'
+                      ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-bold'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800'
                   }`}
                 >
                   <BookOpen className="w-6 h-6" />
@@ -733,10 +733,10 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                       staple: !prev.staple,
                     }))
                   }
-                  className={`h-24 rounded-xl border flex flex-col items-center justify-center gap-2 transition-all relative overflow-hidden ${
+                  className={`h-24 rounded-2xl border flex flex-col items-center justify-center gap-2 transition-all relative overflow-hidden ${
                     extraServices.staple
-                      ? 'border-blue-600 dark:border-primary bg-blue-50 dark:bg-primary/10 text-blue-700 dark:text-primary font-bold'
-                      : 'border-slate-200 dark:border-outline-variant/40 bg-slate-100 dark:bg-[#1A1A1A] text-slate-700 dark:text-on-surface-variant hover:bg-slate-200 dark:hover:bg-[#252525]'
+                      ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-bold'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800'
                   }`}
                 >
                   <Paperclip className="w-6 h-6" />
@@ -752,10 +752,10 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                       spiralBinding: !prev.spiralBinding,
                     }))
                   }
-                  className={`h-24 rounded-xl border flex flex-col items-center justify-center gap-2 transition-all relative overflow-hidden ${
+                  className={`h-24 rounded-2xl border flex flex-col items-center justify-center gap-2 transition-all relative overflow-hidden ${
                     extraServices.spiralBinding
-                      ? 'border-blue-600 dark:border-primary bg-blue-50 dark:bg-primary/10 text-blue-700 dark:text-primary font-bold'
-                      : 'border-slate-200 dark:border-outline-variant/40 bg-slate-100 dark:bg-[#1A1A1A] text-slate-700 dark:text-on-surface-variant hover:bg-slate-200 dark:hover:bg-[#252525]'
+                      ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 font-bold'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800'
                   }`}
                 >
                   <Book className="w-6 h-6" />
@@ -770,25 +770,25 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
       {/* Right Column: Order Summary Sticky Panel */}
       <div className="w-full lg:w-[340px] xl:w-[360px] shrink-0">
         <div className="sticky top-6">
-          <div className="bg-white/90 dark:bg-surface-container-high/90 acrylic-blur rounded-xl border border-slate-200 dark:border-outline-variant/50 p-6 shadow-xl relative overflow-hidden space-y-6">
-            <div className="flex items-center gap-2.5 border-b border-slate-200 dark:border-outline-variant/40 pb-4">
-              <FileCheck className="w-5 h-5 text-blue-600 dark:text-primary" />
-              <h3 className="font-bold text-base text-slate-900 dark:text-on-surface">Tóm Tắt Đơn Hàng</h3>
+          <div className="bg-white dark:bg-slate-900 acrylic-blur rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-xl relative overflow-hidden space-y-6 transition-colors">
+            <div className="flex items-center gap-2.5 border-b border-slate-200 dark:border-slate-800 pb-4">
+              <FileCheck className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <h3 className="font-bold text-base text-slate-900 dark:text-slate-100">Tóm Tắt Đơn Hàng</h3>
             </div>
 
             {/* Order Status Selector Box */}
             <div className="space-y-2">
-              <label className="block text-[11px] font-bold text-slate-500 dark:text-on-surface-variant uppercase tracking-wider font-code">
+              <label className="block text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider font-mono">
                 Trạng Thái Thanh Toán Khi Lưu
               </label>
               <div className="grid grid-cols-2 gap-2">
                 <button
                   type="button"
                   onClick={() => setOrderStatus('COMPLETED')}
-                  className={`py-2 px-2.5 rounded-lg border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all ${
+                  className={`py-2 px-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all ${
                     orderStatus === 'COMPLETED'
-                      ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-bold'
-                      : 'border-slate-200 dark:border-outline-variant/40 bg-slate-100 dark:bg-[#1A1A1A] text-slate-600 dark:text-on-surface-variant'
+                      ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 font-bold'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/60 text-slate-600 dark:text-slate-400'
                   }`}
                 >
                   <CheckCircle2 className="w-3.5 h-3.5" />
@@ -798,10 +798,10 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
                 <button
                   type="button"
                   onClick={() => setOrderStatus('UNPAID')}
-                  className={`py-2 px-2.5 rounded-lg border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all ${
+                  className={`py-2 px-2.5 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all ${
                     orderStatus === 'UNPAID'
-                      ? 'border-amber-600 bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 font-bold'
-                      : 'border-slate-200 dark:border-outline-variant/40 bg-slate-100 dark:bg-[#1A1A1A] text-slate-600 dark:text-on-surface-variant'
+                      ? 'border-amber-600 bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-400 font-bold'
+                      : 'border-slate-200 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/60 text-slate-600 dark:text-slate-400'
                   }`}
                 >
                   <Clock className="w-3.5 h-3.5" />
@@ -823,39 +823,39 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
             {/* Calculations Breakdown */}
             <ul className="space-y-3.5 text-xs font-sans">
               <li className="flex justify-between items-center">
-                <span className="text-slate-500 dark:text-on-surface-variant">Khách hàng:</span>
-                <span className="text-slate-900 dark:text-on-surface font-semibold truncate max-w-[150px]">
+                <span className="text-slate-500 dark:text-slate-400">Khách hàng:</span>
+                <span className="text-slate-900 dark:text-slate-100 font-semibold truncate max-w-[150px]">
                   {customerNameInput.trim() || 'Khách vãng lai'}
                 </span>
               </li>
               <li className="flex justify-between items-center">
-                <span className="text-slate-500 dark:text-on-surface-variant">Số lượng file:</span>
-                <span className="text-slate-900 dark:text-on-surface font-semibold font-mono font-code">
+                <span className="text-slate-500 dark:text-slate-400">Số lượng file:</span>
+                <span className="text-slate-900 dark:text-slate-100 font-semibold font-mono">
                   {fileItems.length} file
                 </span>
               </li>
               <li className="flex justify-between items-center">
-                <span className="text-slate-500 dark:text-on-surface-variant">Tổng trang in:</span>
-                <span className="text-slate-900 dark:text-on-surface font-semibold font-mono font-code">
+                <span className="text-slate-500 dark:text-slate-400">Tổng trang in:</span>
+                <span className="text-slate-900 dark:text-slate-100 font-semibold font-mono">
                   {calculation.totalPages} trang
                 </span>
               </li>
               <li className="flex justify-between items-center">
-                <span className="text-slate-500 dark:text-on-surface-variant">Tổng số tờ giấy:</span>
-                <span className="text-slate-900 dark:text-on-surface font-semibold font-mono font-code">
+                <span className="text-slate-500 dark:text-slate-400">Tổng số tờ giấy:</span>
+                <span className="text-slate-900 dark:text-slate-100 font-semibold font-mono">
                   {calculation.totalSheets} tờ ({paperSize})
                 </span>
               </li>
               <li className="flex justify-between items-center">
-                <span className="text-slate-500 dark:text-on-surface-variant">Tiền in tài liệu:</span>
-                <span className="text-blue-700 dark:text-primary font-bold font-mono font-code text-sm">
+                <span className="text-slate-500 dark:text-slate-400">Tiền in tài liệu:</span>
+                <span className="text-blue-600 dark:text-blue-400 font-bold font-mono text-sm">
                   {formatCurrencyVND(calculation.printCost)}
                 </span>
               </li>
               {calculation.extraCost > 0 && (
                 <li className="flex justify-between items-center">
-                  <span className="text-slate-500 dark:text-on-surface-variant">Phụ phí dịch vụ:</span>
-                  <span className="text-slate-900 dark:text-on-surface font-semibold font-mono font-code">
+                  <span className="text-slate-500 dark:text-slate-400">Phụ phí dịch vụ:</span>
+                  <span className="text-slate-900 dark:text-slate-100 font-semibold font-mono">
                     {formatCurrencyVND(calculation.extraCost)}
                   </span>
                 </li>
@@ -863,11 +863,11 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
             </ul>
 
             {/* Total Amount Box */}
-            <div className="border-t border-dashed border-slate-300 dark:border-outline-variant/60 pt-4">
-              <div className="text-xs font-bold text-slate-500 dark:text-on-surface-variant uppercase tracking-wider mb-1 font-code">
+            <div className="border-t border-dashed border-slate-300 dark:border-slate-700 pt-4">
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1 font-mono">
                 TỔNG THÀNH TIỀN
               </div>
-              <div className="font-mono font-code text-3xl font-extrabold text-blue-700 dark:text-primary tracking-tight">
+              <div className="font-mono text-3xl font-extrabold text-blue-600 dark:text-blue-400 tracking-tight">
                 {formatCurrencyVND(calculation.totalAmount)}
               </div>
             </div>
@@ -877,7 +877,7 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
               type="button"
               onClick={handleSaveAndPrint}
               disabled={fileItems.length === 0}
-              className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-primary dark:hover:bg-[#b8d6ff] text-white dark:text-on-primary-container font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2.5 transition-all active:scale-[0.98] shadow-lg shadow-blue-500/20 dark:shadow-primary-container/30 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2.5 transition-all active:scale-[0.98] shadow-md shadow-blue-500/20 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Printer className="w-4.5 h-4.5" />
               Lưu Đơn / In Phiếu
@@ -888,7 +888,7 @@ export const TabCalculator: React.FC<TabCalculatorProps> = ({
               <button
                 type="button"
                 onClick={handleResetForm}
-                className="text-xs font-bold font-code text-slate-500 dark:text-on-surface-variant hover:text-slate-800 dark:hover:text-on-surface transition-colors flex items-center gap-1.5"
+                className="text-xs font-bold font-mono text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors flex items-center gap-1.5"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 LÀM MỚI FORM

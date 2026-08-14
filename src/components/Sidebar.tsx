@@ -32,31 +32,31 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => 
 
   return (
     <aside
-      className={`h-full bg-white dark:bg-surface-container-lowest text-slate-900 dark:text-primary font-sans border-r border-slate-200 dark:border-outline-variant flex flex-col py-4 shrink-0 select-none transition-all duration-300 ${
+      className={`h-full bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-sans border-r border-slate-200 dark:border-slate-800 flex flex-col py-4 shrink-0 select-none transition-all duration-300 ${
         isCollapsed ? 'w-16 px-2' : 'w-16 md:w-[260px] px-2 md:px-3'
       }`}
     >
       {/* Sidebar Header & Toggle */}
-      <div className="px-2 pb-3 flex items-center justify-between border-b border-slate-200/60 dark:border-outline-variant/20 mb-2">
+      <div className="px-2 pb-3 flex items-center justify-between border-b border-slate-200/80 dark:border-slate-800/80 mb-3">
         <span
-          className={`text-[11px] font-bold text-slate-400 dark:text-outline uppercase tracking-widest transition-opacity ${
+          className={`text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider transition-opacity ${
             isCollapsed ? 'hidden' : 'hidden md:block'
           }`}
         >
-          Danh mục chính
+          Menu Chính
         </span>
         <button
           type="button"
           onClick={() => setIsCollapsed(!isCollapsed)}
           title={isCollapsed ? 'Mở rộng menu' : 'Thu gọn menu'}
-          className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-on-surface hover:bg-slate-100 dark:hover:bg-white/5 transition-colors mx-auto md:mx-0"
+          className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors mx-auto md:mx-0"
         >
           {isCollapsed ? (
-            <PanelLeftOpen className="w-4 h-4 text-blue-600 dark:text-primary" />
+            <PanelLeftOpen className="w-4 h-4 text-blue-600 dark:text-blue-400" />
           ) : (
             <>
               <PanelLeftClose className="w-4 h-4 hidden md:block" />
-              <PanelLeftOpen className="w-4 h-4 md:hidden text-blue-600 dark:text-primary" />
+              <PanelLeftOpen className="w-4 h-4 md:hidden text-blue-600 dark:text-blue-400" />
             </>
           )}
         </button>
@@ -76,32 +76,32 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => 
                 isCollapsed ? 'md:justify-center' : 'md:justify-between'
               } px-2.5 md:px-3.5 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                 isActive
-                  ? 'bg-blue-50 dark:bg-primary-container/15 text-blue-700 dark:text-primary border-l-[3px] border-blue-600 dark:border-primary font-semibold shadow-sm'
-                  : 'text-slate-600 dark:text-on-surface-variant hover:text-slate-900 dark:hover:text-on-surface hover:bg-slate-100 dark:hover:bg-white/5 border-l-[3px] border-transparent'
+                  ? 'bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 border-l-[3px] border-blue-600 dark:border-blue-500 font-semibold shadow-sm'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/80 dark:hover:bg-slate-800/60 border-l-[3px] border-transparent'
               }`}
             >
               <div className="flex items-center gap-3">
                 <Icon
-                  className={`w-5 h-5 shrink-0 ${
-                    isActive ? 'text-blue-600 dark:text-primary' : 'text-slate-400 dark:text-on-surface-variant'
+                  className={`w-5 h-5 shrink-0 transition-transform duration-200 ${
+                    isActive ? 'text-blue-600 dark:text-blue-400 scale-105' : 'text-slate-400 dark:text-slate-500 group-hover:scale-105'
                   }`}
                 />
                 <div className={`text-left ${isCollapsed ? 'hidden' : 'hidden md:block'}`}>
                   <div
-                    className={`text-sm ${
-                      isActive ? 'text-blue-700 dark:text-primary font-semibold' : 'text-slate-800 dark:text-on-surface'
+                    className={`text-sm tracking-tight ${
+                      isActive ? 'text-blue-700 dark:text-blue-400 font-semibold' : 'text-slate-800 dark:text-slate-200'
                     }`}
                   >
                     {item.label}
                   </div>
-                  <div className="text-[11px] text-slate-500 dark:text-on-surface-variant/70 font-normal truncate max-w-[170px]">
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-normal truncate max-w-[170px]">
                     {item.subtitle}
                   </div>
                 </div>
               </div>
               {isActive && (
                 <ChevronRight
-                  className={`w-4 h-4 text-blue-600 dark:text-primary opacity-80 ${
+                  className={`w-4 h-4 text-blue-600 dark:text-blue-400 opacity-80 ${
                     isCollapsed ? 'hidden' : 'hidden md:block'
                   }`}
                 />
@@ -113,12 +113,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => 
 
       {/* Clean Footer Version Info */}
       <div
-        className={`mt-auto px-2 pt-3 border-t border-slate-200/60 dark:border-outline-variant/20 flex items-center text-[11px] text-slate-400 dark:text-on-surface-variant/50 font-medium ${
+        className={`mt-auto px-2 pt-3 border-t border-slate-200/80 dark:border-slate-800/80 flex items-center text-[11px] text-slate-400 dark:text-slate-500 font-medium ${
           isCollapsed ? 'justify-center' : 'justify-center md:justify-between'
         }`}
       >
-        <span className={isCollapsed ? 'hidden' : 'hidden md:inline'}>QuickPrice</span>
-        <span>v1.0</span>
+        <span className={isCollapsed ? 'hidden' : 'hidden md:inline'}>QuickPrice Photocopy</span>
+        <span className="font-mono">v1.0</span>
       </div>
     </aside>
   );

@@ -133,8 +133,8 @@ export const TabPricing: React.FC<TabPricingProps> = ({ isDarkMode, onToggleDark
       {/* Header title */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-slate-900 dark:text-on-surface">Cấu Hình Bảng Giá & Giao Diện</h2>
-          <p className="text-xs text-slate-500 dark:text-on-surface-variant mt-0.5">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100">Cấu Hình Bảng Giá & Giao Diện</h2>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
             Quản lý đơn giá in, phụ phí dịch vụ và chế độ hiển thị Dark Mode.
           </p>
         </div>
@@ -142,7 +142,7 @@ export const TabPricing: React.FC<TabPricingProps> = ({ isDarkMode, onToggleDark
           <button
             type="button"
             onClick={resetToDefault}
-            className="px-4 py-2 rounded-xl border border-slate-200 dark:border-outline-variant/40 bg-slate-100 dark:bg-[#1A1A1A] text-slate-700 dark:text-on-surface-variant hover:text-slate-900 dark:hover:text-on-surface hover:bg-slate-200 dark:hover:bg-[#252525] text-xs font-semibold flex items-center gap-2 transition-colors"
+            className="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold flex items-center gap-2 transition-colors"
           >
             <RotateCcw className="w-4 h-4" />
             Khôi Phục Mặc Định
@@ -150,7 +150,7 @@ export const TabPricing: React.FC<TabPricingProps> = ({ isDarkMode, onToggleDark
           <button
             type="submit"
             disabled={saving}
-            className="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-primary dark:hover:bg-[#b8d6ff] text-white dark:text-on-primary-container text-xs font-bold flex items-center gap-2 transition-all shadow-md shadow-blue-500/20 dark:shadow-primary-container/20 disabled:opacity-50"
+            className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white text-xs font-bold flex items-center gap-2 transition-all shadow-md shadow-blue-500/20 active:scale-95 disabled:opacity-50"
           >
             <Save className="w-4 h-4" />
             {saving ? 'Đang lưu...' : 'Lưu Bảng Giá'}
@@ -159,19 +159,19 @@ export const TabPricing: React.FC<TabPricingProps> = ({ isDarkMode, onToggleDark
       </div>
 
       {/* 0. Dark Mode Switcher Card */}
-      <div className="bg-white dark:bg-[#2D2D2D] rounded-xl border border-slate-200 dark:border-[#3D3D3D] p-6 space-y-4 shadow-sm">
-        <div className="flex items-center gap-2 text-blue-600 dark:text-primary border-b border-slate-200 dark:border-[#3D3D3D] pb-3">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 space-y-4 shadow-sm transition-colors">
+        <div className="flex items-center gap-2.5 text-blue-600 dark:text-blue-400 border-b border-slate-200 dark:border-slate-800 pb-3">
           {isDarkMode ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5 text-amber-500" />}
-          <h3 className="font-bold text-sm text-slate-900 dark:text-on-surface">Chế Độ Hiển Thị Giao Diện (Theme Mode)</h3>
+          <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100">Chế Độ Hiển Thị Giao Diện (Theme Mode)</h3>
         </div>
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-slate-50 dark:bg-[#1A1A1A] rounded-xl border border-slate-200 dark:border-outline-variant/30">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-slate-50 dark:bg-slate-950/60 rounded-xl border border-slate-200 dark:border-slate-800">
           <div>
-            <h4 className="font-semibold text-sm text-slate-900 dark:text-on-surface">
+            <h4 className="font-semibold text-sm text-slate-900 dark:text-slate-100">
               {isDarkMode ? 'Đang bật Giao diện Tối (Dark Mode)' : 'Đang bật Giao diện Sáng (Light Mode)'}
             </h4>
-            <p className="text-xs text-slate-500 dark:text-on-surface-variant mt-0.5">
-              Chuyển đổi tức thì giữa giao diện sáng sạch sẽ hoặc tối đen chuẩn Windows 11 Fluent Design từ StitchMCP.
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              Chuyển đổi tức thì giữa giao diện sáng sạch sẽ hoặc tối đen sang trọng.
             </p>
           </div>
 
@@ -179,7 +179,7 @@ export const TabPricing: React.FC<TabPricingProps> = ({ isDarkMode, onToggleDark
             type="button"
             onClick={() => onToggleDarkMode(!isDarkMode)}
             className={`w-14 h-8 rounded-full p-1 transition-colors relative flex items-center shadow-inner ${
-              isDarkMode ? 'bg-blue-600 dark:bg-primary-container justify-end' : 'bg-slate-300 justify-start'
+              isDarkMode ? 'bg-blue-600 justify-end' : 'bg-slate-300 justify-start'
             }`}
           >
             <div className="w-6 h-6 rounded-full bg-white shadow-md flex items-center justify-center text-slate-900 transition-transform">
@@ -190,10 +190,10 @@ export const TabPricing: React.FC<TabPricingProps> = ({ isDarkMode, onToggleDark
       </div>
 
       {/* 1. Print Price per Page Card */}
-      <div className="bg-white dark:bg-[#2D2D2D] rounded-xl border border-slate-200 dark:border-[#3D3D3D] p-6 space-y-4 shadow-sm">
-        <div className="flex items-center gap-2 text-blue-600 dark:text-primary border-b border-slate-200 dark:border-[#3D3D3D] pb-3">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 space-y-4 shadow-sm transition-colors">
+        <div className="flex items-center gap-2.5 text-blue-600 dark:text-blue-400 border-b border-slate-200 dark:border-slate-800 pb-3">
           <Printer className="w-5 h-5" />
-          <h3 className="font-bold text-sm text-slate-900 dark:text-on-surface">1. Đơn Giá In (Tính Trên 1 Trang)</h3>
+          <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100">1. Đơn Giá In (Tính Trên 1 Trang)</h3>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

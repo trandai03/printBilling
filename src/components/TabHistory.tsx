@@ -52,33 +52,33 @@ export const TabHistory: React.FC<TabHistoryProps> = ({ onViewReceipt }) => {
       {/* Top Header Controls */}
       <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
         <div>
-          <h2 className="text-xl font-bold text-slate-900 dark:text-on-surface">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100">
             Lịch Sử Đơn Hàng & Thống Kê Công Nợ Khách Hàng
           </h2>
-          <p className="text-xs text-slate-500 dark:text-on-surface-variant mt-0.5">
-            Tổng số đơn hàng: <span className="font-bold text-blue-600 dark:text-primary font-mono font-code">{rawOrdersCount}</span> | 
-            Khách hàng đã in: <span className="font-bold text-blue-600 dark:text-primary font-mono font-code">{uniqueCustomers.length}</span>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            Tổng số đơn hàng: <span className="font-bold text-blue-600 dark:text-blue-400 font-mono">{rawOrdersCount}</span> | 
+            Khách hàng đã in: <span className="font-bold text-blue-600 dark:text-blue-400 font-mono">{uniqueCustomers.length}</span>
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full md:w-auto">
           {/* Revenue Collected */}
-          <div className="px-4 py-2 bg-white dark:bg-[#2D2D2D] rounded-xl border border-slate-200 dark:border-[#3D3D3D] flex items-center gap-2 shrink-0 shadow-sm">
+          <div className="px-4 py-2 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center gap-2 shrink-0 shadow-sm">
             <DollarSign className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             <div className="text-xs">
-              <span className="text-slate-500 dark:text-on-surface-variant">Đã thu: </span>
-              <span className="font-bold font-mono font-code text-emerald-600 dark:text-emerald-400 text-sm">
+              <span className="text-slate-500 dark:text-slate-400">Đã thu: </span>
+              <span className="font-bold font-mono text-emerald-600 dark:text-emerald-400 text-sm">
                 {formatCurrencyVND(totalRevenue)}
               </span>
             </div>
           </div>
 
           {/* Unpaid Debt Total */}
-          <div className="px-4 py-2 bg-amber-50 dark:bg-amber-500/10 rounded-xl border border-amber-200 dark:border-amber-500/30 flex items-center gap-2 shrink-0 shadow-sm">
+          <div className="px-4 py-2 bg-amber-50 dark:bg-amber-950/40 rounded-xl border border-amber-200 dark:border-amber-900/40 flex items-center gap-2 shrink-0 shadow-sm">
             <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
             <div className="text-xs">
               <span className="text-amber-700 dark:text-amber-300 font-semibold">Chưa thu (Nợ): </span>
-              <span className="font-bold font-mono font-code text-amber-700 dark:text-amber-400 text-sm">
+              <span className="font-bold font-mono text-amber-700 dark:text-amber-400 text-sm">
                 {formatCurrencyVND(totalUnpaid)}
               </span>
             </div>
@@ -87,7 +87,7 @@ export const TabHistory: React.FC<TabHistoryProps> = ({ onViewReceipt }) => {
           <button
             type="button"
             onClick={exportCSV}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-primary dark:hover:bg-[#b8d6ff] text-white dark:text-on-primary-container text-xs font-bold rounded-xl flex items-center gap-2 transition-all shadow-md shadow-blue-500/20 dark:shadow-primary-container/20 shrink-0"
+            className="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white text-xs font-bold rounded-xl flex items-center gap-2 transition-all shadow-md shadow-blue-500/20 shrink-0 active:scale-95"
           >
             <Download className="w-4 h-4" />
             Xuất CSV
@@ -103,8 +103,8 @@ export const TabHistory: React.FC<TabHistoryProps> = ({ onViewReceipt }) => {
             onClick={() => setSelectedCustomerFilter('')}
             className={`p-3 rounded-xl border text-left transition-all ${
               selectedCustomerFilter === ''
-                ? 'border-blue-600 dark:border-primary bg-blue-50 dark:bg-primary/10 text-blue-700 dark:text-primary shadow-sm font-bold'
-                : 'border-slate-200 dark:border-outline-variant/40 bg-white dark:bg-[#2D2D2D] text-slate-700 dark:text-on-surface-variant hover:bg-slate-50 dark:hover:bg-[#323232]'
+                ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 shadow-sm font-bold'
+                : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/60'
             }`}
           >
             <div className="flex items-center justify-between text-xs font-semibold">
@@ -112,9 +112,9 @@ export const TabHistory: React.FC<TabHistoryProps> = ({ onViewReceipt }) => {
                 <Users className="w-3.5 h-3.5" />
                 Tất Cả Khách
               </span>
-              <span className="font-mono font-code">{rawOrdersCount} đơn</span>
+              <span className="font-mono">{rawOrdersCount} đơn</span>
             </div>
-            <div className="text-sm font-extrabold font-mono font-code mt-1 text-slate-900 dark:text-on-surface">
+            <div className="text-sm font-extrabold font-mono mt-1 text-slate-900 dark:text-slate-100">
               {formatCurrencyVND(totalRevenue + totalUnpaid)}
             </div>
           </button>
@@ -126,18 +126,18 @@ export const TabHistory: React.FC<TabHistoryProps> = ({ onViewReceipt }) => {
               onClick={() => setSelectedCustomerFilter(cust.name)}
               className={`p-3 rounded-xl border text-left transition-all truncate ${
                 selectedCustomerFilter === cust.name
-                  ? 'border-blue-600 dark:border-primary bg-blue-50 dark:bg-primary/10 text-blue-700 dark:text-primary shadow-sm font-bold'
-                  : 'border-slate-200 dark:border-outline-variant/40 bg-white dark:bg-[#2D2D2D] text-slate-700 dark:text-on-surface-variant hover:bg-slate-50 dark:hover:bg-[#323232]'
+                  ? 'border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-400 shadow-sm font-bold'
+                  : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/60'
               }`}
             >
               <div className="flex items-center justify-between text-xs font-semibold truncate">
                 <span className="truncate flex items-center gap-1.5">
-                  <User className="w-3.5 h-3.5 text-blue-600 dark:text-primary" />
+                  <User className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                   {cust.name}
                 </span>
-                <span className="font-mono font-code shrink-0">{cust.orderCount} đơn</span>
+                <span className="font-mono shrink-0">{cust.orderCount} đơn</span>
               </div>
-              <div className="text-sm font-extrabold font-mono font-code mt-1 text-emerald-600 dark:text-emerald-400">
+              <div className="text-sm font-extrabold font-mono mt-1 text-emerald-600 dark:text-emerald-400">
                 {formatCurrencyVND(cust.totalSpent)}
               </div>
             </button>

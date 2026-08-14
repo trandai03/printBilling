@@ -75,3 +75,7 @@ scratch/
 
 # SuperPower
 docs/
+
+# Graph
+graphify-out/
+.venv

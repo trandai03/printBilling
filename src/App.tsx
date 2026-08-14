@@ -48,9 +48,13 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-[#f9f9f9] dark:bg-[#131313] text-slate-900 dark:text-on-surface overflow-hidden font-sans selection:bg-primary-container selection:text-on-primary-container transition-colors duration-200">
+    <div className="h-screen w-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 overflow-hidden font-sans selection:bg-blue-500/20 selection:text-blue-600 transition-colors duration-200">
       {/* Top Windows Fluent App Header */}
-      <Header isDbReady={isDbReady} />
+      <Header
+        isDbReady={isDbReady}
+        isDarkMode={isDarkMode}
+        onToggleDarkMode={(enabled) => setIsDarkMode(enabled)}
+      />
 
       {/* Main Workspace Area */}
       <div className="flex-1 flex overflow-hidden relative">
@@ -58,7 +62,7 @@ export const App: React.FC = () => {
         <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
 
         {/* Dynamic Main View */}
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 bg-[#f9f9f9] dark:bg-[#131313] relative transition-colors duration-200">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 bg-slate-100/70 dark:bg-slate-950 relative transition-colors duration-200">
           {/* Ambient Lighting Background Accent */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 dark:bg-primary/5 rounded-full blur-[140px] pointer-events-none -translate-y-1/2 translate-x-1/3 z-0"></div>
 
